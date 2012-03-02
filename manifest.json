@@ -1,0 +1,9 @@
+{
+  "name": "Reuse Tab",
+  "version": "0.1",
+  "description": "Allows you to open external links in a pinned tab.",
+  "background_page": "background.html",
+  "permissions": [
+    "tabs"
+  ]
+}
