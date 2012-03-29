@@ -1,4 +1,5 @@
 function onTabCreated(newTab) {
+  if (newTab.pinned) return;
   var url = newTab.url;
   var host = parseUri(url).host;
   chrome.tabs.query({"pinned": true}, function(pinnedTabs) {
