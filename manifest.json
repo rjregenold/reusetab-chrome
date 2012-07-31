@@ -5,5 +5,10 @@
   "background_page": "background.html",
   "permissions": [
     "tabs"
-  ]
+  ],
+  "icons": {
+    "16": "resources/images/icon16.png",
+    "48": "resources/images/icon48.png",
+    "128": "resources/images/icon128.png"
+  }
 }
