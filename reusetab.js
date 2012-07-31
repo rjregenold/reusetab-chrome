@@ -9,6 +9,10 @@ function onTabCreated(newTab) {
     if (!matchedTab) return;
     chrome.tabs.update(matchedTab.id, {"url": url, "active": true});
     chrome.tabs.remove(newTab.id);
+    // make sure the new window is focused. on my version of chrome,
+    // this happens automatically. perhaps on older versions it
+    // does not, though.
+    chrome.windows.update(matchedTab.windowId, {"focused": true});
   });
 }
 
