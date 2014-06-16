@@ -1,4 +1,10 @@
-function onTabCreated(newTab) {
+function log(line) {
+  console.log("Reuse Tab: " + line);
+}
+
+var tabsToWatch = [];
+
+function onUriKnown(newTab) {
   if (newTab.pinned) return;
   var url = newTab.url;
   var host = parseUri(url).host;
@@ -16,5 +22,28 @@ function onTabCreated(newTab) {
   });
 }
 
+
+function onTabCreated(newTab) {
+  var url = newTab.url;
+  if (url) {
+    log("Opening " + url);
+    onUriKnown(newTab);
+  } else {
+    tabsToWatch.push(newTab.id);
+  }
+}
+
+function onTabUpdated(id, change, tab) {
+  log("Updating: " + tab.url);
+  if (change.url) {
+    var i = tabsToWatch.indexOf(id);
+    if (i >= 0) {
+      tabsToWatch.splice(i, 1);
+      onUriKnown(tab);
+    }
+  }
+}
+
 chrome.tabs.onCreated.addListener(onTabCreated);
+chrome.tabs.onUpdated.addListener(onTabUpdated);
 
