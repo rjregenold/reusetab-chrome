@@ -1,5 +1,5 @@
 function log(line) {
-  console.log("Reuse Tab: " + line);
+  //console.log("Reuse Tab: " + line);
 }
 
 var tabsToWatch = [];
