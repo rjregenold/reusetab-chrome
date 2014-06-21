@@ -1,14 +1,20 @@
 {
+  "manifest_version": 2,
   "name": "Reuse Tab",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Allows you to open external links in a pinned tab.",
-  "background_page": "background.html",
+  "background": {
+    "scripts": ["vendor/underscore-min.js", "vendor/parseuri.js", "reusetab.js" ],
+    "persistent": false
+  },
   "permissions": [
     "tabs"
   ],
-  "icons": {
-    "16": "resources/images/icon16.png",
-    "48": "resources/images/icon48.png",
-    "128": "resources/images/icon128.png"
+  "browser_action": {
+    "default_icon": {
+      "16": "resources/images/icon16.png",
+      "48": "resources/images/icon48.png",
+      "128": "resources/images/icon128.png"
+    }
   }
 }
